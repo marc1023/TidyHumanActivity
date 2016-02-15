@@ -19,7 +19,7 @@ remove(y_train,y_test)
 
 features<-read.table("UCI_HAR_Dataset/features.txt")
 featureNames<-tolower(features[,2])
-indexMeanStd<-grep("*mean*|*std*",featureNames)
+indexMeanStd<-grep("*mean\\(\\)*|*std\\(\\)*",featureNames)
 X<-X[,indexMeanStd]
 
 ## 3. Uses descriptive activity names to name the activities in the data set
@@ -31,7 +31,29 @@ descriptiveNames<-unname(descriptiveNames)
 
 ## 4. Appropriately labels the data set with descriptive variable names.
 
+featureNames<-featureNames[indexMeanStd]
 
+featureNames<-gsub("-"," ",featureNames)
+featureNames<-gsub("bodybody","body",featureNames)
+
+featureNames<-gsub("mean\\(\\) ","mean in ",featureNames)
+featureNames<-gsub("mean\\(\\)","mean",featureNames)
+featureNames<-gsub("std\\(\\) ","standard deviation in ",featureNames)
+featureNames<-gsub("std\\(\\)","standard deviation",featureNames)
+
+featureNames<-gsub("mag"," magnitude's",featureNames)
+
+featureNames<-gsub("tbodyaccjerk","body linear acceleration",featureNames)
+featureNames<-gsub("tbodygyrojerk","angular velocity",featureNames)
+featureNames<-gsub("fbodyaccjerk","Fourier-transformed body linear acceleration's",featureNames)
+featureNames<-gsub("fbodygyrojerk","Fourier-transformed angular velocity's",featureNames)
+
+featureNames<-gsub("tbodyacc","body acceleration",featureNames)
+featureNames<-gsub("tbodygyro","body orientation",featureNames)
+featureNames<-gsub("fbodyacc","Fourier-transformed body acceleration's",featureNames)
+featureNames<-gsub("fbodygyro","Fourier-transformed body orientation's",featureNames)
+
+featureNames<-gsub("tgravityacc","acceleration due to gravity",featureNames)
 
 ## 5. From the data set in step 4, creates a second, independent tidy data set
 ## with the average of each variable for each activity and each subject.
