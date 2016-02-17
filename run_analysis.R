@@ -76,7 +76,7 @@ names(X)<-featureNames
 
 ## Creates a tidy data set tidyDataOriginal
 tidyDataOriginal<-cbind(subject,Activity)
-tidyDataOriginal<-cbind(tidyData,X)
+tidyDataOriginal<-cbind(tidyDataOriginal,X)
 
 ## 5. From the data set in step 4, creates a second, independent tidy data set
 ## with the average of each variable for each activity and each subject.
@@ -93,3 +93,4 @@ colnames(tidyData)[2]<-"Subject Number"
 
 ## Writes the new tidy data set to a CSV file.
 write.csv(tidyData,"Tidy_Data.csv")
+write.table(tidyData,file="Tidy_Data.txt",row.name=FALSE)
