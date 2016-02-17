@@ -99,5 +99,5 @@ run_analysis.R generates the "Tidy_Data.csv" in five steps:
 measurement and discards the rest.
 3. It renames the activities to something descriptive.
 4. It renames the data set with descriptive variable names.
-5. From the data set in step 4, calculates average of each variable for each 
-activity and each subject. Then, it writes it to a CSV file.
+5. From the data set in step 4, it calculates the average of each variable for
+each activity and each subject. Then, it writes it to a CSV file.
